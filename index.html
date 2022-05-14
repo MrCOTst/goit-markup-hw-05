@@ -29,7 +29,7 @@
       <nav class="header-nav">
         <!--Навігація-->
         <ul class="menu list">
-          <li class="menu-item"><a class="menu-link link" href="./index.html">Студия</a></li>
+          <li class="menu-item "><a class="menu-link link current" href="./index.html">Студия</a></li>
           <li class="menu-item"><a class="menu-link link" href="./portfolio.html">Портфолио</a></li>
           <li class="menu-item"><a class="menu-link link" href="/Контакты">Контакты</a></li>
         </ul>
@@ -60,7 +60,7 @@
         <section class="hero">
           <div class="conteiner hero-content">
           <h1 class="hero-title">Эффективные решения <br /> для вашего бизнеса</h1>
-          <button class="modal-btn" type="button">Заказать услугу</button>
+          <button data-modal-open class="modal-btn" type="button">Заказать услугу</button>
            </div>
           </section>
                 
@@ -126,12 +126,15 @@
         <ul class="list about-list">
           <li class="about-unit">
             <img src="./imeges/exempl_1.jpg" alt="Пример для ПК" width="370" height="294" />
+            <h3 class="subtitle ">Десктопные приложения</h3>
           </li>
           <li class="about-unit">
             <img src="./imeges/exempl_2.jpg" alt="Пример для смартфона" width="370" height="294" />
+            <h3 class="subtitle">Мобильные приложения</h3>
           </li>
           <li class="about-unit">
             <img src="./imeges/exempl_3.jpg" alt="Пример для планшета" width="370" height="294" />
+            <h3 class="subtitle">Дизайнерские решения</h3>
           </li>
         </ul>
       </div>
@@ -369,25 +372,25 @@
       <div class="join">
         <h3 class="subtitle">Присоединяйтесь</h3>
         <ul class="list footer-imeg">                            
-          <li> <a class="social" href="https://www.instagram.com/" target="_blank"
+          <li> <a class="social-footer" href="https://www.instagram.com/" target="_blank"
             rel="noopener noreferrer"><svg class="icon-footer" width="20" height="20">
             <use href="./imeges/icons.svg#icon-instagram">
             </use>
           </svg></a></li>
   
-          <li ><a class="social" href="https://twitter.com/" target="_blank"
+          <li ><a class="social-footer" href="https://twitter.com/" target="_blank"
             rel="noopener noreferrer"><svg class="icon-footer" width="20" height="20">
             <use href="./imeges/icons.svg#icon-twitter">
             </use>
           </svg></a></li>
   
-          <li><a class="social" href="https://www.facebook.com/" target="_blank"
+          <li><a class="social-footer" href="https://www.facebook.com/" target="_blank"
             rel="noopener noreferrer"><svg class="icon-footer" width="20" height="20">
             <use href="./imeges/icons.svg#icon-facebook">
             </use>
           </svg></a></li>
   
-          <li><a class="social" href="https://www.linkedin.com/" target="_blank"
+          <li><a class="social-footer" href="https://www.linkedin.com/" target="_blank"
             rel="noopener noreferrer"><svg class="icon-footer" width="20" height="20">
             <use href="./imeges/icons.svg#icon-linkedin">
             </use>
@@ -397,7 +400,15 @@
     </div>
  
     </footer>
-    
+
+    <div class="backdrop is-hidden">
+      <div class="modal">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium ab voluptas porro iusto labore laboriosam ea dolorem molestiae nam officia! Nemo, numquam itaque quos fugit eum officia beatae deleniti rerum!
+
+        </p>
+        <button>Закрыть</button>
+      </div>
+    </div>
   </body>
  
 </html>

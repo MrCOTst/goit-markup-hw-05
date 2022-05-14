@@ -31,6 +31,7 @@ body {
   font-family: var(--main-font);
   color: #212121;
   letter-spacing: 0.03em;
+  /* padding-top: 80px; */
 }
 
 img {
@@ -95,29 +96,36 @@ img {
     line-height: 1.17;
     text-align: center;
   }
-  .subtitle {
-    margin-top: 0;
-    margin-bottom: 10px;
+.subtitle {
+  margin-top: 0;
+  margin-bottom: 10px;
   
-    font-size: 14px;
-    line-height: 1.14;
-    text-transform: uppercase;
+  font-size: 14px;
+  line-height: 1.14;
+  text-transform: uppercase;
   }
 
 /*headear*/
 
 .page-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* z-index: 10; */
   background-color: var(--background-section);
   border-bottom-width: 1px;
   border-bottom-color: #ECECEC;
   border-bottom-style: solid;
+  
 }
 
 .header {
   display: flex;
   align-items: center;
   margin-bottom: 0;
-     
+  
+       
   /* outline: 2px solid blue; */
 }
 
@@ -135,6 +143,8 @@ img {
 }
 
 .menu-link {
+  position: relative;
+
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
@@ -143,10 +153,27 @@ img {
   padding-top: 32px;
   padding-bottom: 32px;
 
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   /* outline: 2px solid blue; */
 }
 .menu-link:hover,
 .menu-link:focus {
+  color: var(--hover-color);
+  
+}
+.current::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0;
+  display: block;
+  height: 4px;
+  width: 100%;
+  border-radius: 2px;
+  background-color: var(--hover-color);
+}
+.current {
   color: var(--hover-color);
 }
 
@@ -168,13 +195,18 @@ img {
   color: var(--header-contact);
   padding-top: 32px;
   padding-bottom: 32px;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     
   /* outline: 2px solid blue; */
 }
 
 .icon-menu {
   margin-right: 10px;
-  fill: var(--header-contact); }
+  fill: var(--header-contact); 
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
 
 .imeg-contact:hover .icon-menu,
 .imeg-contact:focus .icon-menu {
@@ -294,6 +326,29 @@ img {
   justify-content: space-between;
 }
 
+.about-unit {
+  position:relative;
+}
+.about-unit h3 {
+  display:flex;
+  width:100%;
+  padding-top: 27px;
+  padding-bottom: 27px; 
+  margin: 0;
+  justify-content: center;
+  /* align-items: center; */
+
+  position:absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+
+  color: var(--background-section);
+  background-color: rgba(47, 48, 58, 0.8);
+
+}
+
+
 /*tim*/
 .tim {  
   background-color:var(--background-tim);
@@ -355,12 +410,16 @@ img {
   border-radius: 50%;
   border: 1px solid transparent;
   cursor: pointer;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
  
 }
 
 .icon-tim {
  
   fill: var(--color-passiv-icon-link);
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social:hover {
@@ -394,6 +453,8 @@ img {
   border: 1px solid var(--color-passiv-icon-link);
   cursor: pointer;
   padding: 16px 32px;
+
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
  
 }
 
@@ -401,6 +462,8 @@ img {
   width: 106px;
   height: 60px;
   fill: var(--color-passiv-icon-link);
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customer:hover {
@@ -447,6 +510,8 @@ address {
   font-size: 14px;
   line-height: 1.71;
   color: #ffffff;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .place:hover,
 .place:focus {
@@ -457,6 +522,8 @@ address {
   font-size: 14px;
   line-height: 1.71;
   color: rgba(255, 255, 255, 0.6);
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-contact:hover,
@@ -482,7 +549,7 @@ address {
   margin-left: 10px;
 }
 
-.social {
+.social-footer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -492,6 +559,8 @@ address {
   border-radius: 50%;
   border: 1px solid transparent;
   cursor: pointer;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
  
 }
 
@@ -499,14 +568,39 @@ address {
   fill: var(--background-section);
 }
 
-.social:hover,
-.social:focus {
+.social-footer:hover {
   background-color: var(--hover-color);
 }
 
-.social:hover .icon-tim,
-.social:focus .icon-tim {
-   fill: var(--background-section);
+/*Modal*/
+.backdrop {
+  position: fixed;
+  top: 0;
+  left:0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color:rgba(0, 0, 0, 0.2);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 528px;
+  min-height: 581px;
+
+  background-color: var(--background-section);
+
 }
 
 
@@ -540,6 +634,10 @@ address {
   border: 1px solid transparent;
   border-radius: 4px;
   padding: 6px 22px;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  filter 250ms cubic-bezier(0.4, 0, 0.2, 1);
  
 }
 
@@ -557,19 +655,25 @@ address {
   flex-wrap: wrap;
 }
 
+.work-unit {
+  
+  width: calc((100% - 60px) / 3);
+  margin-right: 30px;
+  margin-bottom: 30px;
+
+  
+
+  
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);  
+}
+
 .work-unit:hover,
 .work-unit:focus {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.work-unit {
-  width: calc((100% - 60px) / 3);
-  margin-right: 30px;
-  margin-bottom: 30px;
-  
 
-}
- .work-unit:nth-child(3n) {
+.work-unit:nth-child(3n) {
    margin-right: 0;
  }
  .work-unit:nth-last-child(-n+3) {
@@ -577,6 +681,7 @@ address {
 }
 
 .border {
+  
   padding: 20px 24px;
   border-left: 1px solid #EEEEEE;
   border-right: 1px solid #EEEEEE;
@@ -595,4 +700,37 @@ address {
   font-size: 16px;
   line-height: 1.88;
   color: #757575;
+}
+
+.work-overlay {
+  position: relative;
+  overflow: hidden;
+}
+.work-unit:hover .overlay {
+  transform: translateY(0);
+}
+
+.overlay {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 150, 243, 0.9);
+
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlay > p {
+  display: block;
+  padding-top: 63px;
+  padding-left: 24px;
+  padding-right: 24px;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 0.03;
+  
+  color: var(--background-section);
 }
